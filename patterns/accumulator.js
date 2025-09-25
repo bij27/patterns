@@ -22,7 +22,22 @@ export function sumToN(n) {
  * @returns `1` if n is 0
  */
 export function factorial(n) {
-  // TODO
+  if (typeof n !== "number") {
+    return NaN;
+  }
+
+  if (n < 0) {
+    return undefined;
+  }
+  if (n === 0 || n === 1) {
+    return 1;
+  }
+
+  let result = 1;
+  for (let i = 1; i <= n; i++) {
+    result *= i;
+  }
+  return result;
 }
 
 /**
@@ -32,7 +47,21 @@ export function factorial(n) {
  * @returns `[]` if n is 0 or negative
  */
 export function buildNArray(n) {
-  // TODO
+  if (typeof n !== "number") {
+    return null;
+  }
+
+  if (n <= 0) {
+    return [];
+  }
+
+  const newArray = [];
+  
+  for (let i = 1; i <= n; i++) {
+    newArray.push(i);
+  }
+  
+  return newArray;
 }
 
 /**
@@ -40,7 +69,19 @@ export function buildNArray(n) {
  * @returns {string} the longest string in `strings`
  */
 export function getLongestString(strings) {
-  // TODO
+  if (strings.length === 0) {
+    return "";
+  }
+
+  let longestString = "";
+
+  for (const str of strings) {
+    if (str.length > longestString.length) {
+      longestString = str;
+    }
+  }
+
+  return longestString;
 }
 
 /**
@@ -48,7 +89,16 @@ export function getLongestString(strings) {
  * @returns {number} the number of students present
  */
 export function countPresent(attendance) {
-  // TODO
+  if (attendance.length === 0) {
+    return 0;
+  }
+  let count = 0;
+  for (let i = 0; i < attendance.length; i++) {
+    if (attendance[i] === true) {
+      count++;
+    }
+  }
+  return count;
 }
 
 /**
@@ -62,5 +112,29 @@ export function countPresent(attendance) {
  * @returns `null` if `dna` is not a string
  */
 export function complementDNA(dna) {
-  // TODO
+  if (typeof dna !== "string") {
+    return null;
+  }
+
+   let complement = "";
+  for (const char of dna) {
+    switch (char) {
+      case "A":
+        complement += "T";
+        break;
+      case "T":
+        complement += "A";
+        break;
+      case "C":
+        complement += "G";
+        break;
+      case "G":
+        complement += "C";
+        break;
+      default:
+        break;
+    }
+  }
+
+  return complement;
 }
